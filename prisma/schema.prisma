@@ -1,0 +1,223 @@
+// Switchboard - AI business inbox and task automation.
+// Single Postgres datasource. Works with Prisma Postgres or any Postgres
+// connection string supplied through DATABASE_URL.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Message {
+  id            String            @id @default(cuid())
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  channel       String            @default("email")
+  senderName    String
+  senderEmail   String?
+  company       String?
+  subject       String?
+  body          String
+  status        MessageStatus     @default(RECEIVED)
+  intent        String?
+  priority      String?
+  sentiment     String?
+  risk          RiskLevel         @default(LOW)
+  requiresHuman Boolean           @default(false)
+  confidence    Float?
+  engine        String?
+  classification Classification?
+  runs          AutomationRun[]
+  tasks         Task[]
+  approvals     Approval[]
+  actions       Action[]
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([intent])
+}
+
+model Classification {
+  id         String   @id @default(cuid())
+  messageId  String   @unique
+  message    Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  intent     String
+  priority   String
+  sentiment  String
+  request    String
+  summary    String
+  confidence Float
+  risk       RiskLevel
+  policy     String
+  reasoning  String
+  signals    Json
+  engine     String
+  createdAt  DateTime @default(now())
+}
+
+model AutomationRun {
+  id         String      @id @default(cuid())
+  messageId  String?
+  message    Message?    @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  trigger    String      @default("inbound")
+  status     RunStatus   @default(PENDING)
+  decision   String?
+  summary    String?
+  engine     String?
+  startedAt  DateTime    @default(now())
+  finishedAt DateTime?
+  steps      RunStep[]
+  actions    Action[]
+  tasks      Task[]
+  approvals  Approval[]
+  audit      AuditLog[]
+
+  @@index([status])
+  @@index([startedAt])
+}
+
+model RunStep {
+  id        String     @id @default(cuid())
+  runId     String
+  run       AutomationRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  seq       Int
+  name      String
+  status    StepStatus @default(OK)
+  detail    String?
+  ms        Int?
+  createdAt DateTime   @default(now())
+
+  @@index([runId, seq])
+}
+
+model Action {
+  id        String       @id @default(cuid())
+  runId     String?
+  run       AutomationRun? @relation(fields: [runId], references: [id], onDelete: SetNull)
+  messageId String?
+  message   Message?     @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  type      ActionType
+  status    ActionStatus @default(PENDING)
+  risk      RiskLevel    @default(LOW)
+  title     String
+  detail    String?
+  mode      String?
+  createdAt DateTime     @default(now())
+
+  @@index([runId])
+}
+
+model Task {
+  id          String      @id @default(cuid())
+  messageId   String
+  message     Message     @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  runId       String?
+  run         AutomationRun? @relation(fields: [runId], references: [id], onDelete: SetNull)
+  title       String
+  department  String      @default("Operations")
+  priority    String      @default("MEDIUM")
+  dueAt       DateTime
+  status      TaskStatus  @default(OPEN)
+  createdAt   DateTime    @default(now())
+  completedAt DateTime?
+
+  @@index([status])
+  @@index([department])
+}
+
+model Approval {
+  id          String           @id @default(cuid())
+  messageId   String
+  message     Message          @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  runId       String?
+  run         AutomationRun?   @relation(fields: [runId], references: [id], onDelete: SetNull)
+  status      ApprovalStatus   @default(PENDING)
+  reason      String
+  risk        RiskLevel        @default(HIGH)
+  requestedAt DateTime         @default(now())
+  decidedAt   DateTime?
+  decidedBy   String?
+  note        String?
+  draftBody   String?
+
+  @@index([status])
+}
+
+model Setting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  runId     String?
+  run       AutomationRun? @relation(fields: [runId], references: [id], onDelete: Cascade)
+  actor     String   @default("system")
+  event     String
+  detail    String?
+  createdAt DateTime @default(now())
+
+  @@index([runId])
+}
+
+enum MessageStatus {
+  RECEIVED
+  PROCESSED
+  NEEDS_REVIEW
+  ESCALATED
+  FAILED
+}
+
+enum RunStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  NEEDS_REVIEW
+  FAILED
+}
+
+enum StepStatus {
+  OK
+  WARN
+  ERROR
+}
+
+enum ActionType {
+  DRAFT_REPLY
+  SEND_REPLY
+  CREATE_TASK
+  ASSIGN_DEPARTMENT
+  ESCALATE
+  ARCHIVE_SPAM
+  EXTRACT_DATA
+  CHECK_CALENDAR
+  REQUEST_APPROVAL
+}
+
+enum ActionStatus {
+  PENDING
+  DONE
+  SKIPPED
+  FAILED
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum TaskStatus {
+  OPEN
+  DONE
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
