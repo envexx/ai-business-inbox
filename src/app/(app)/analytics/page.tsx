@@ -6,15 +6,15 @@ export const dynamic = "force-dynamic";
 function BarList({
   title,
   rows,
-  tone = "accent",
+  tone = "brand",
 }: {
   title: string;
   rows: Array<{ label: string; value: number }>;
-  tone?: "accent" | "hot";
+  tone?: "brand" | "hot";
 }) {
   const max = Math.max(1, ...rows.map((r) => r.value));
   const total = rows.reduce((sum, r) => sum + r.value, 0);
-  const barColor = tone === "hot" ? "bg-hot" : "bg-accent";
+  const barColor = tone === "hot" ? "bg-hot" : "bg-brand";
 
   return (
     <Panel>
@@ -74,7 +74,7 @@ export default async function AnalyticsPage() {
               <div key={day.day} className="flex flex-1 flex-col items-center gap-1">
                 <div className="flex h-32 w-full items-end">
                   <div
-                    className="w-full rounded-t bg-accent/80"
+                    className="w-full rounded-t bg-brand/80"
                     style={{ height: `${Math.round((day.total / maxDay) * 100)}%` }}
                     title={`${day.day}: ${day.total} messages`}
                   />

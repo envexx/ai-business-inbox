@@ -159,14 +159,14 @@ export function IntakeForm() {
             )}
             <p className="text-[13px] text-ink-3">engine {result.engine}</p>
             <div className="mt-1 flex flex-wrap gap-3 text-sm">
-              <Link href={`/inbox/${result.messageId}`} className="text-accent-strong hover:underline">
+              <Link href={`/inbox/${result.messageId}`} className="text-brand-strong hover:underline">
                 Open message
               </Link>
-              <Link href={`/runs/${result.runId}`} className="text-accent-strong hover:underline">
+              <Link href={`/runs/${result.runId}`} className="text-brand-strong hover:underline">
                 Open run
               </Link>
               {result.approvalId ? (
-                <Link href="/approvals" className="text-accent-strong hover:underline">
+                <Link href="/approvals" className="text-brand-strong hover:underline">
                   Review approval
                 </Link>
               ) : null}

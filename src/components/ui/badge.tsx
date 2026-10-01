@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-type Tone = "neutral" | "hot" | "warm" | "cold" | "ok" | "warn" | "danger" | "accent";
+type Tone = "neutral" | "hot" | "warm" | "cold" | "ok" | "warn" | "danger" | "brand";
 
 const toneClass: Record<Tone, string> = {
   neutral: "border-line-2 bg-surface-2 text-ink-2",
@@ -11,7 +11,7 @@ const toneClass: Record<Tone, string> = {
   ok: "border-ok/35 bg-ok/12 text-ok",
   warn: "border-warn/35 bg-warn/12 text-warn",
   danger: "border-danger/35 bg-danger/12 text-danger",
-  accent: "border-accent/40 bg-accent-soft text-accent-strong",
+  brand: "border-brand/40 bg-brand-soft text-brand-strong",
 };
 
 export function Badge({
@@ -47,7 +47,7 @@ export function RunStatusBadge({ status }: { status: string }) {
     COMPLETED: "ok",
     NEEDS_REVIEW: "warn",
     FAILED: "danger",
-    RUNNING: "accent",
+    RUNNING: "brand",
     PENDING: "neutral",
   };
   const label = status.replace(/_/g, " ");

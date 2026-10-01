@@ -42,7 +42,7 @@ export default async function InboxPage({
             name="q"
             defaultValue={q}
             placeholder="Search sender, subject, body"
-            className="h-9 w-56 rounded-md border border-line-2 bg-surface px-3 text-sm text-ink placeholder:text-ink-3 focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent"
+            className="h-9 w-56 rounded-md border border-line-2 bg-surface px-3 text-sm text-ink placeholder:text-ink-3 focus-visible:border-brand focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand"
           />
           <button
             type="submit"
@@ -89,7 +89,7 @@ export default async function InboxPage({
             action={
               <Link
                 href="/intake"
-                className="mt-1 rounded-md bg-accent px-3 py-2 text-sm font-medium text-on-accent hover:bg-accent-strong"
+                className="mt-1 rounded-md bg-brand px-3 py-2 text-sm font-medium text-on-brand hover:bg-brand-strong"
               >
                 New message
               </Link>
@@ -117,7 +117,7 @@ export default async function InboxPage({
                   >
                     <td className="px-4 py-3">
                       <Link href={`/inbox/${message.id}`} className="block">
-                        <span className="font-medium text-ink hover:text-accent-strong">
+                        <span className="font-medium text-ink hover:text-brand-strong">
                           {message.senderName}
                         </span>
                         <span className="block text-[13px] text-ink-2">{message.company ?? ""}</span>

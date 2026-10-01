@@ -1,7 +1,7 @@
 export function StatStrip({
   items,
 }: {
-  items: Array<{ label: string; value: number | string; hint?: string; tone?: "hot" | "accent" }>;
+  items: Array<{ label: string; value: number | string; hint?: string; tone?: "hot" | "brand" }>;
 }) {
   return (
     <dl className="grid grid-cols-2 divide-line overflow-hidden rounded-lg border border-line bg-surface sm:grid-cols-4 sm:divide-x">
@@ -14,8 +14,8 @@ export function StatStrip({
             className={
               item.tone === "hot"
                 ? "tnum mt-1 text-2xl font-semibold text-hot"
-                : item.tone === "accent"
-                  ? "tnum mt-1 text-2xl font-semibold text-accent"
+                : item.tone === "brand"
+                  ? "tnum mt-1 text-2xl font-semibold text-brand"
                   : "tnum mt-1 text-2xl font-semibold text-ink"
             }
           >

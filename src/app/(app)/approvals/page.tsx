@@ -34,7 +34,7 @@ export default async function ApprovalsPage() {
                   <div className="flex flex-wrap items-center gap-2">
                     <Link
                       href={`/inbox/${approval.message.id}`}
-                      className="text-sm font-semibold text-ink hover:text-accent-strong"
+                      className="text-sm font-semibold text-ink hover:text-brand-strong"
                     >
                       {approval.message.senderName}
                     </Link>
@@ -76,7 +76,7 @@ export default async function ApprovalsPage() {
                 <ApprovalBadge value={approval.status} />
                 <Link
                   href={`/inbox/${approval.message.id}`}
-                  className="text-sm text-ink hover:text-accent-strong"
+                  className="text-sm text-ink hover:text-brand-strong"
                 >
                   {approval.message.senderName}
                 </Link>

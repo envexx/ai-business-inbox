@@ -32,7 +32,7 @@ export default async function DecisionsPage() {
               <Panel key={decision.id} className="flex flex-col">
                 <PanelHeader
                   title={
-                    <Link href={`/inbox/${decision.message.id}`} className="hover:text-accent-strong">
+                    <Link href={`/inbox/${decision.message.id}`} className="hover:text-brand-strong">
                       {decision.message.senderName}
                     </Link>
                   }

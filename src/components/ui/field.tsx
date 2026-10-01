@@ -23,7 +23,7 @@ export const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttribute
         ref={ref}
         className={cn(
           "h-9 w-full rounded-md border border-line-2 bg-surface px-3 text-sm text-ink placeholder:text-ink-3",
-          "focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent",
+          "focus-visible:border-brand focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand",
           className,
         )}
         {...props}
@@ -41,7 +41,7 @@ export const Textarea = React.forwardRef<
       ref={ref}
       className={cn(
         "w-full rounded-md border border-line-2 bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-3",
-        "focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent",
+        "focus-visible:border-brand focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand",
         className,
       )}
       {...props}

@@ -12,8 +12,8 @@ export function Switch({
     <SwitchPrimitive.Root
       className={cn(
         "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border border-line-2 transition-colors",
-        "data-[state=checked]:border-accent data-[state=checked]:bg-accent data-[state=unchecked]:bg-surface-2",
-        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-50",
+        "data-[state=checked]:border-brand data-[state=checked]:bg-brand data-[state=unchecked]:bg-surface-2",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:opacity-50",
         className,
       )}
       {...props}

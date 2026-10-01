@@ -64,7 +64,7 @@ export default async function TasksPage({
               <li key={task.id} className="flex flex-wrap items-center gap-3 px-4 py-3">
                 <TaskToggle taskId={task.id} done={task.status === "DONE"} title={task.title} />
                 <span className="text-[13px] text-ink-3">
-                  <Link href={`/inbox/${task.message.id}`} className="hover:text-accent-strong">
+                  <Link href={`/inbox/${task.message.id}`} className="hover:text-brand-strong">
                     {task.message.senderName}
                   </Link>
                   {task.message.company ? ` - ${task.message.company}` : ""}

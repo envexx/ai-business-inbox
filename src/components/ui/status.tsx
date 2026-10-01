@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Badge } from "@/components/ui/badge";
 
-type Tone = "neutral" | "hot" | "warm" | "cold" | "ok" | "warn" | "danger" | "accent";
+type Tone = "neutral" | "hot" | "warm" | "cold" | "ok" | "warn" | "danger" | "brand";
 
 const priorityTone: Record<string, Tone> = { HIGH: "danger", MEDIUM: "warm", LOW: "cold" };
 const riskTone: Record<string, Tone> = { HIGH: "danger", MEDIUM: "warm", LOW: "cold" };
@@ -38,7 +38,7 @@ export function ApprovalBadge({ value }: { value: string }) {
 
 export function IntentBadge({ value }: { value: string | null | undefined }) {
   if (!value) return <Badge tone="neutral">unclassified</Badge>;
-  return <Badge tone="accent">{value.replace(/_/g, " ")}</Badge>;
+  return <Badge tone="brand">{value.replace(/_/g, " ")}</Badge>;
 }
 
 export { priorityTone, riskTone };

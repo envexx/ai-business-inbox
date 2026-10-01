@@ -27,7 +27,7 @@ export default async function RunDetailPage({
         <div className="mt-2 flex flex-wrap items-center gap-3">
           <h1 className="text-2xl font-semibold tracking-tight text-ink">
             {run.message ? (
-              <Link href={`/inbox/${run.message.id}`} className="hover:text-accent-strong">
+              <Link href={`/inbox/${run.message.id}`} className="hover:text-brand-strong">
                 {run.message.senderName}
               </Link>
             ) : (

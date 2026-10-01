@@ -30,7 +30,7 @@ export function TabsTrigger({
       className={cn(
         "rounded px-3 py-1.5 text-[13px] font-medium text-ink-2 transition-colors",
         "hover:text-ink data-[state=active]:bg-surface data-[state=active]:text-ink data-[state=active]:shadow-sm",
-        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand",
         className,
       )}
       {...props}

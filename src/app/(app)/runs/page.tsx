@@ -77,7 +77,7 @@ export default async function RunsPage({
                     className="border-b border-line last:border-b-0 transition-colors hover:bg-surface-2/50"
                   >
                     <td className="px-4 py-3">
-                      <Link href={`/runs/${run.id}`} className="font-medium text-ink hover:text-accent-strong">
+                      <Link href={`/runs/${run.id}`} className="font-medium text-ink hover:text-brand-strong">
                         {run.message?.senderName ?? "Unlinked"}
                       </Link>
                       <span className="block text-[13px] text-ink-2">

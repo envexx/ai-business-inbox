@@ -2,15 +2,15 @@ import { cn } from "@/lib/utils";
 
 export function ScoreMeter({
   score,
-  tone = "accent",
+  tone = "brand",
   className,
 }: {
   score: number;
-  tone?: "accent" | "hot" | "warm" | "cold";
+  tone?: "brand" | "hot" | "warm" | "cold";
   className?: string;
 }) {
   const toneBg = {
-    accent: "bg-accent",
+    brand: "bg-brand",
     hot: "bg-hot",
     warm: "bg-warm",
     cold: "bg-cold",

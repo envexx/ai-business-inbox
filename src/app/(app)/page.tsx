@@ -27,7 +27,7 @@ export default async function DashboardPage() {
           </h1>
         </div>
         <div className="flex items-center gap-2">
-          <Badge tone="accent">engine: {engine}</Badge>
+          <Badge tone="brand">engine: {engine}</Badge>
           <span className="tnum text-xs text-ink-3">{formatDateTime(new Date())}</span>
         </div>
       </header>
@@ -35,7 +35,7 @@ export default async function DashboardPage() {
       <StatStrip
         items={[
           { label: "Messages today", value: stats.messagesToday },
-          { label: "Auto handled", value: stats.autoHandled, tone: "accent" },
+          { label: "Auto handled", value: stats.autoHandled, tone: "brand" },
           { label: "Human review", value: stats.humanReview, tone: "hot" },
           { label: "Escalated", value: stats.escalated },
         ]}
@@ -48,7 +48,7 @@ export default async function DashboardPage() {
           action={
             <Link
               href="/intake"
-              className="mt-1 rounded-md bg-accent px-3 py-2 text-sm font-medium text-on-accent hover:bg-accent-strong"
+              className="mt-1 rounded-md bg-brand px-3 py-2 text-sm font-medium text-on-brand hover:bg-brand-strong"
             >
               Open intake console
             </Link>
@@ -61,7 +61,7 @@ export default async function DashboardPage() {
               title="Live queue"
               hint="latest messages with the decision the system reached"
               action={
-                <Link href="/inbox" className="text-[13px] text-accent-strong hover:underline">
+                <Link href="/inbox" className="text-[13px] text-brand-strong hover:underline">
                   Open inbox
                 </Link>
               }
@@ -74,7 +74,7 @@ export default async function DashboardPage() {
                     <div className="flex flex-wrap items-center gap-2">
                       <Link
                         href={`/inbox/${message.id}`}
-                        className="text-sm font-semibold text-ink hover:text-accent-strong"
+                        className="text-sm font-semibold text-ink hover:text-brand-strong"
                       >
                         {message.senderName}
                       </Link>
@@ -109,7 +109,7 @@ export default async function DashboardPage() {
               <PanelHeader
                 title="Pending approvals"
                 action={
-                  <Link href="/approvals" className="text-[13px] text-accent-strong hover:underline">
+                  <Link href="/approvals" className="text-[13px] text-brand-strong hover:underline">
                     Review all
                   </Link>
                 }
@@ -123,7 +123,7 @@ export default async function DashboardPage() {
                       <div className="flex items-center gap-2">
                         <Link
                           href={`/inbox/${approval.message.id}`}
-                          className="text-sm font-medium text-ink hover:text-accent-strong"
+                          className="text-sm font-medium text-ink hover:text-brand-strong"
                         >
                           {approval.message.senderName}
                         </Link>
@@ -142,7 +142,7 @@ export default async function DashboardPage() {
                 hint={latestRun?.message ? latestRun.message.senderName : undefined}
                 action={
                   latestRun ? (
-                    <Link href={`/runs/${latestRun.id}`} className="text-[13px] text-accent-strong hover:underline">
+                    <Link href={`/runs/${latestRun.id}`} className="text-[13px] text-brand-strong hover:underline">
                       Detail
                     </Link>
                   ) : null

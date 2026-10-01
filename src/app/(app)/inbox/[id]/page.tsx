@@ -88,7 +88,7 @@ export default async function MessageDetailPage({
                     <ul className="mt-2 space-y-1.5">
                       {signals.map((signal) => (
                         <li key={signal} className="flex gap-2 text-sm text-ink-2">
-                          <span aria-hidden="true" className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                          <span aria-hidden="true" className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand" />
                           {signal}
                         </li>
                       ))}
@@ -158,7 +158,7 @@ export default async function MessageDetailPage({
                       title={`Run ${run.trigger}`}
                       hint={run.summary ?? undefined}
                       action={
-                        <Link href={`/runs/${run.id}`} className="text-[13px] text-accent-strong hover:underline">
+                        <Link href={`/runs/${run.id}`} className="text-[13px] text-brand-strong hover:underline">
                           Detail
                         </Link>
                       }

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "An operations platform that reads incoming messages, classifies intent, applies policy, and routes work with human approval where it matters.",
 };
 
-const themeInit = `(function(){try{var s=localStorage.getItem('fp-theme');var m=window.matchMedia('(prefers-color-scheme: dark)').matches;var d=s==='dark'||(!s&&m);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
+const themeInit = `(function(){try{var s=localStorage.getItem('sb-theme');var m=window.matchMedia('(prefers-color-scheme: dark)').matches;var d=s==='dark'||(!s&&m);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
 
 export default function RootLayout({
   children,
